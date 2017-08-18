@@ -1,0 +1,33 @@
+"Games"
+{
+	"tf"
+	{
+		"Addresses"
+		{
+			"Patch_Crossbow_CanHeadshot"
+			{
+				"windows"
+				{
+					"signature" "CTFProjectile_HealingBolt::CanHeadshot"
+				}				
+			}		
+		}
+		
+		"Signatures"
+		{
+			"CTFProjectile_HealingBolt::CanHeadshot"
+			{
+				"library"	"server"
+				"windows"	"\xBA\x01\x00\x00\x00\x0F\x45\xCA\x89\x4D\xF4"
+			}			
+		}
+		
+		"Offsets"
+		{
+			"CTFProjectile_HealingBolt::CanHeadshot"
+			{
+				"windows"	"0"
+			}
+		}
+	}
+}
