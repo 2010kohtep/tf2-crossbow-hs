@@ -16,7 +16,7 @@ Address GameConfGetAddressEx(Handle h, const char[] patch, const char[] offset)
 {
 	Address iAddr = GameConfGetAddress(h, patch);
 	
-	if(iAddr == Address_Null)
+	if (iAddr == Address_Null)
 	{
 		return Address_Null;
 	}
@@ -34,7 +34,7 @@ Address GameConfGetAddressEx(Handle h, const char[] patch, const char[] offset)
 
 void WriteData(Address iAddr, int[] Data, int iSize)
 {
-	if(iAddr == Address_Null)
+	if (iAddr == Address_Null)
 	{
 		return;
 	}
@@ -45,10 +45,10 @@ void WriteData(Address iAddr, int[] Data, int iSize)
 	}
 }
 
-void Patch_AllowedToHealTarget()
+void Patch_HealingBolt_CanHeadshot()
 {
 	Handle h = LoadGameConfigFile("tf2.koh.crossbowhs");
-	if(h == null)
+	if (h == null)
 	{
 		SetFailState("Failed to load tf2.koh.crossbowhs gamedata.");
 		return;
@@ -58,16 +58,16 @@ void Patch_AllowedToHealTarget()
 	
 	delete h;
 	
-	if(pAddr == Address_Null)
+	if (pAddr == Address_Null)
 	{
 		LogError("[ERROR] Failed to patch CTFProjectile_HealingBolt::CanHeadshot()");
 		return;
 	}
 
-	WriteData(pAddr, {0xB9, 0x01, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90}, 8);
+	WriteData(pAddr, { 0xB9, 0x01, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90 }, 8);
 }
 
 public void OnPluginStart()
 {
-	Patch_AllowedToHealTarget();
+	Patch_HealingBolt_CanHeadshot();
 }
